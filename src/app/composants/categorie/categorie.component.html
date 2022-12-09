@@ -1,0 +1,44 @@
+<form #f="ngForm" (ngSubmit)="inform(f)">
+
+
+    Nom: <input type="text" name="nom" [(ngModel)]="categorie.nomcat"> <br>
+
+    <button type="submit">Valider</button>
+</form>
+<hr>
+<!--Rechercher dans une barre de recherche-->
+
+
+<input type="text" (input)="chercher($event)" name="search" placeholder="Chercher catégorie...">
+
+        <ol>
+            <li *ngFor="let cat of categories">{{cat.nomcat}}</li>
+           
+        </ol>
+
+
+        <script src="http://localhost:8050/api/categories"></script>
+        
+<hr>
+        <!--Tableau des catégories-->
+<table style="border: 2px solid">
+    <tr style="border: 2px solid">
+        <td>Id</td>
+        <td>Nom</td>
+        
+        <td>Action 1</td>
+        <td>Action 2</td>
+        <td>Action 3</td>
+
+    </tr>
+    <tr *ngFor="let cat of categories" style="border: 2px solid">
+        <td>{{cat.id_cat}}</td>
+        <td>{{cat.nomcat }}</td>
+       <!-- <td>{{cat.annonces}}</td>-->
+        <td><button (click)="modifier(cat.id_cat)">Modifier</button></td>
+        <td><button (click)="delete(cat.id_cat)">Supprimer</button></td> 
+        <td><a href="/afficherannonces">Les annonces</a></td>
+    </tr>
+</table>
+
+<button (click)="logout()">Deconnexion</button>
