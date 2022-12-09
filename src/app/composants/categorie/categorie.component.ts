@@ -18,7 +18,7 @@ export class CategorieComponent implements OnInit{
 
   categorie!:Categorie
 
-  constructor(private catService:CategorieService, private route:ActivatedRoute, private uService:AuthentificationService){}
+  constructor(private catService:CategorieService, private route:ActivatedRoute,private router:Router, private uService:AuthentificationService){}
 
 
   
@@ -87,5 +87,10 @@ export class CategorieComponent implements OnInit{
   logout(){
 
     this.uService.logout()
+  }
+
+  accueil()
+  {
+    this.router.navigateByUrl("/accueil")
   }
 }

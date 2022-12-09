@@ -1,1 +1,62 @@
-<p>annonce works!</p>
+<form #f="ngForm" (ngSubmit)="inform(f)">
+
+
+    Titre: <input type="text" name="titre" [(ngModel)]="annonce.titre"> <br>
+    
+    Description: <input type="text" name="description" [(ngModel)]="annonce.description"> <br>
+    Date de publication: <input type="date" name="datepubli" [(ngModel)]="annonce.datepubli"> <br>
+    Photos: <input type="file" name="photo" accept="image/png, image/jpeg" [(ngModel)]="annonce.photo">
+
+    <button type="submit">Valider</button>
+</form>
+<hr>
+
+<!--Rechercher dans une barre de recherche-->
+
+
+<input type="text" (input)="chercher($event)" name="search" placeholder="Chercher annonce...">
+
+        <ol>
+            <li *ngFor="let a of annonces">{{a.titre}}</li>
+           
+        </ol>
+
+
+        <script src="http://localhost:8050/api/annonces"></script>
+        
+<hr>
+
+        <!--Tableau des catégories-->
+        <table style="border: 2px solid">
+            <tr style="border: 2px solid">
+                <td> Id annonce</td>
+                <td>Photo de l'annonce</td>
+                <td>titre de l'annonce</td> 
+                <td>Description de l'annonce</td>
+                <td>Date de publication</td>
+                <td>Date d'expiration</td>
+                
+                
+                <td>Action 2</td>
+                <td>Action 3</td>
+        
+            </tr>
+            <tr *ngFor="let a of annonces" style="border: 2px solid">
+                <td>{{a.idannonce}}</td>
+                <td>{{a.photo}}</td>
+                <td>{{a.titre}}</td>
+                <td>{{a.description}}</td>
+                <td>{{a.datepubli}}</td>
+                <td>{{a.dateexpi}}</td>
+
+               <!-- <td>{{cat.annonces}}</td>-->
+                <td><button (click)="modifier(a.idannonce)">Modifier</button></td>
+                <td><button (click)="delete(a.idannonce)">Supprimer</button></td> 
+                
+            </tr>
+        </table>
+
+<button (click)="logout()">Deconnexion</button>
+
+<br> <button (click)="accueil()">Accueil</button> 
+

@@ -40,5 +40,10 @@ export class AnnonceService {
   {
     return this.http.get<Annonce>(`http://localhost:8050/api//annoncesBydate/${datepubli}`)
   }
+
+  getAnnonceparMotcle(recherche:string)
+  {
+    return this.http.get<Annonce[]>(`http://localhost:8050/api/annoncesrecherche/${recherche}`)
+  }
   
 }
